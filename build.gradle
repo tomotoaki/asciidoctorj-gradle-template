@@ -1,0 +1,111 @@
+plugins {
+    id 'org.asciidoctor.jvm.convert' version '4.0.4'
+}
+
+repositories {
+    mavenCentral()
+}
+
+asciidoctor {
+    outputOptions {
+        backends 'html5', 'docbook'
+    }
+    baseDir = file('src/docs/asciidoc')
+    outputDir = file('build/docs')
+    resources {
+        from('src/docs/asciidoc') {
+            include(
+                '**/images/**', // 画像ファイル
+                '**/src/**', // ソースファイル
+                '**/js/**',  // JSファイル
+                '**/css/**'  // CSSファイル
+            )
+            exclude '_*'
+        }
+    }
+    asciidoctorj {
+        version = '3.0.0'
+        modules {
+            diagram.use()
+            diagram.version '2.3.1'
+        }
+        attributes (
+            'lang': 'ja',
+            'encoding': 'utf-8',
+            'toc': 'left',
+            'icons': 'font',
+            'imagesdir': "images",
+            'stylesdir': "${rootDir}/src/docs/styles",
+            'stylesheet': 'asciidoctor.css',
+            //'source-highlighter': 'coderay',
+            'source-highlighter': 'rouge',
+            'plantuml-format': 'svg',
+        )
+    }
+}
+
+tasks.register('convertDocx', Exec) {
+    // asciidoctorタスクの後に実行されるように依存関係を設定
+    dependsOn asciidoctor
+    group = 'documentation'
+    // 説明を更新: プロジェクトルートディレクトリ名を使用することを明記
+    description = 'Generates DOCX from DocBook (index.xml) using Pandoc, named after the project root directory.'
+
+    // asciidoctorタスクの出力ディレクトリ設定を参照
+    def docbookDir = file("${asciidoctor.outputDir}/docbook")
+    def docxDir = file("${asciidoctor.outputDir}/docx")
+
+    // Gradleの入力/出力定義 (Up-to-dateチェック用)
+    // 入力ファイルは index.xml
+    def targetDocbookFile = file("${docbookDir}/index.xml")
+    inputs.file(targetDocbookFile)
+        .withPathSensitivity(PathSensitivity.RELATIVE) // パス感度を設定
+        .optional() // ファイルが存在しない場合もあるため optional を設定
+
+    // 出力ファイル名をプロジェクトルートディレクトリ名から決定
+    // 例: プロジェクトルートが 'my-project' なら、出力ファイル名は 'my-project.docx'
+    def projectRootName = project.rootDir.name // プロジェクトルートディレクトリ名を取得
+    def targetDocxFile = file("${docxDir}/${projectRootName}.docx")
+    outputs.file(targetDocxFile) // 具体的な出力ファイルを指定
+
+    // Pandocコマンドの設定
+    executable 'pandoc' // PATH上のpandocを使用
+
+    // doFirstブロック内で、実行時に引数を動的に設定
+    doFirst {
+        // 出力ディレクトリが存在しない場合は作成
+        docxDir.mkdirs()
+
+        // 対象のDocBookファイル (index.xml) を取得
+        def docbookFile = targetDocbookFile // 上で定義した変数を使用
+
+        if (docbookFile.exists()) { // ファイルが存在するか確認
+            // 出力ファイルパスは上で定義した targetDocxFile を使用
+
+            // pandocコマンドの引数を設定
+            args = [
+                '--from=docbook',       // 入力フォーマット
+                '--to=docx',            // 出力フォーマット
+                '--highlight-style=tango',  // シンタックスハイライトスタイル
+                "--reference-doc=${rootDir}/src/docs/styles/template.docx", // テンプレートファイルを指定
+                '-o',                   // 出力ファイル指定オプション
+                targetDocxFile.absolutePath, // 出力ファイルパス (例: my-project.docx)
+                docbookFile.absolutePath, // 入力ファイルパス (index.xml)
+            ]
+            // ログメッセージも更新
+            logger.lifecycle("Converting ${docbookFile.name} to ${targetDocxFile.name} using Pandoc...")
+        } else {
+            logger.warn("Target DocBook file (${docbookFile.name}) not found in ${docbookDir}. Skipping Pandoc conversion.")
+            // 実行をスキップするために例外をスロー
+            throw new StopExecutionException("Target DocBook file (${docbookFile.name}) not found for Pandoc conversion in ${docbookDir}.")
+        }
+    }
+
+    // Pandoc実行に失敗した場合、ビルドを失敗させる (デフォルト)
+    ignoreExitValue = false
+}
+
+// asciidoctor タスクが正常に完了した後に convertDocx を実行する
+tasks.named('asciidoctor') {
+    finalizedBy tasks.named('convertDocx')
+}

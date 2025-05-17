@@ -1,0 +1,10 @@
+{
+  "textlint.languages": [
+    "plaintext",
+    "markdown",
+    "asciidoc",
+    "html"
+  ],
+  "textlint.nodePath": "C:\\node",
+  "textlint.run": "onType"
+}

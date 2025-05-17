@@ -1,0 +1,36 @@
+{
+  "filters": {
+    "allowlist": {
+      "allow": [
+        "いいえ",
+        "フラッシュ"
+      ]
+    },
+    "comments": true
+  },
+  "plugins": [
+    "@ynitto/asciidoc"
+  ],
+  "rules": {
+    "@textlint-ja/no-synonyms": true,
+    "@textlint-ja/textlint-rule-no-insert-dropping-sa": true,
+    "ja-hiragana-fukushi": true,
+    "ja-hiragana-hojodoushi": true,
+    "ja-no-inappropriate-words": true,
+    "ja-no-orthographic-variants": true,
+    "no-hoso-kinshi-yogo": true,
+    "no-mixed-zenkaku-and-hankaku-alphabet": true,
+    "no-start-duplicated-conjunction": true,
+    "no-surrogate-pair": true,
+    "prefer-tari-tari": true,
+    "preset-ja-spacing": true,
+    "preset-ja-technical-writing": true,
+    "preset-jtf-style": true,
+    "prh": {
+      "rulePaths": [
+        ".prh/prh.yml"
+      ]
+    },
+    "use-si-units": true
+  }
+}
