@@ -1,6 +1,6 @@
 meta:
   - title: 漢字の閉じ開きルール
-  - memo: 手動更新で管理してます
+  - memo: https://github.com/ics-creative/textlint-rule-preset-icsmedia を参考に手動で更新
 rules:
   - expected: $1あとで
     pattern: /(して|した|、)後で/
@@ -129,9 +129,9 @@ rules:
   - pattern: 時々
     expected: ときどき
     prh: ひらがなで書くと読みやすくなります（ひらく漢字）
-  - pattern: 特に
-    expected: とくに
-    prh: ひらがなで書くと読みやすくなります（ひらく漢字）
+  # - pattern: 特に
+  #   expected: とくに
+  #   prh: ひらがなで書くと読みやすくなります（ひらく漢字）
   - pattern: 何処か
     expected: どこか
     prh: ひらがなで書くと読みやすくなります（ひらく漢字）

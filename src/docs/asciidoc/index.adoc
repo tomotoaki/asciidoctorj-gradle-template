@@ -7,32 +7,32 @@ include::./_attribute.adoc[]
 = Asciidocテンプレート
 
 == はじめに
-AsciiDoc、Draw.io、PlantUMLを使ってソフトウェア仕様書を作るためのテンプレートです。
+AsciiDoc、Draw.io、PlantUMLを使ってソフトウェア仕様書を作るためのテンプレートである。
 
 == AsciiDocとは
-AsciiDocは、プレーンテキストで記述できる強力なマークアップ言語であり、技術文書やマニュアルなど、複雑な構造を持つドキュメントの作成に適しています。 +
-Markdownと比較すると、より高度な文書構造を記述できる点が特徴です。 +
-また、HTML、PDF、EPUBなど、多様な出力形式に対応しているため、作成したドキュメントをさまざまな媒体で公開できます。 +
-AsciiDocの仕様は明確に定義されているため、一貫性のある文書作成を支援します。 +
-そのため、複数人で共同作業を行う場合や、長期にわたってメンテナンスが必要なドキュメントを作成する場合にも適しています。 +
-ただし、Markdownと比較すると記法が複雑であるため、習得にはやや時間がかかります。 +
-しかし、その分、高度な表現力と柔軟性を備えており、複雑なドキュメント作成のニーズに応えることができます。
+AsciiDocは、プレーンテキストで記述できる強力なマークアップ言語であり、技術文書やマニュアルなど、複雑な構造を持つドキュメントの作成に適している。 +
+Markdownと比較すると、より高度な文書構造を記述できる点が特徴である。 +
+また、HTML、PDF、EPUBなど、多様な出力形式に対応しているため、作成したドキュメントをさまざまな媒体で公開できる。 +
+AsciiDocの仕様は明確に定義されているため、一貫性のある文書を作成できる。 +
+そのため、複数人で共同作業を行う場合や、長期にわたってメンテナンスが必要なドキュメントを作成する場合にも適している。 +
+ただし、Markdownと比較すると記法が複雑であるため、習得にはやや時間がかかる。 +
+しかし、その分、高度な表現力と柔軟性を備えており、複雑なドキュメント作成のニーズに応えることができる。
 
-AsciiDocは、文書を記述するための軽量マークアップ言語です。 +
-Markdownと比較して、より多くの機能を持ち、とくにドキュメントの構造化やスタイルのカスタマイズが容易です。 +
-AsciiDocは、技術文書や書籍、Webコンテンツなど、さまざまな形式のドキュメントを作成するために使用されます。
+AsciiDocは、文書を記述するための軽量マークアップ言語である。 +
+Markdownと比較して、より多くの機能を持ち、とくにドキュメントの構造化やスタイルのカスタマイズが容易である。 +
+AsciiDocは、技術文書や書籍、Webコンテンツなど、さまざまな形式のドキュメントを作成するために使用される。
 
-Markdownを書いたことがあれば似たような感じで書けます。 +
-困ったら以下を参考にどう書くのか調べながら書いてください。
+Markdownを書いたことがあれば似たような感じで書ける。 +
+困ったら以下を参考にどう書くのか調べながら書くこと。
 
-link:https://takumon.github.io/asciidoc-syntax-quick-reference-japanese-translation/[Asciidoctor文法クイックリファレンス（日本語訳）]
+* https://takumon.github.io/asciidoc-syntax-quick-reference-japanese-translation/[Asciidoctor文法クイックリファレンス（日本語訳）]
 
 == Markdownとの違い
-違いは以下にまとめられています。
+Markdownとの違いは以下を参照されたい。
 
-link:https://asciidoctor.org/docs/asciidoc-vs-markdown/[Compare AsciiDoc to Markdown]
+* https://asciidoctor.org/docs/asciidoc-vs-markdown/[Compare AsciiDoc to Markdown]
 
-よく使用し、Markdownと書き方が違うものを示す。
+特に使用頻度が高いと思われるものを以下に示す。
 
 === 見出し
 Markdownでは``\#``で記述するがasciidocでは``=``を使用する。 +
@@ -75,9 +75,9 @@ Markdownでは``{数値}.``で記述するがasciidocでは``.``を使用する�
 ... 2段下げ
 
 === テーブル
-テーブルは|===で始めて|===で終わるブロック内に書きます。
-行の終わりの|は不要です。
-ヘッダーはヘッダーとデータの行の間に空白を入れるか、ブロックの頭にオプションでヘッダーを指定します。
+テーブルは|===で始めて|===で終わるブロック内に書く。
+行の終わりの|は不要である。
+ヘッダーはヘッダーとデータの行の間に空白を入れるか、ブロックの頭にオプションでヘッダーを指定する。
 オプションの指定で幅の自動調整も一緒にできるのでブロックの頭にオプション指定したほうが良いでしょう。
 
 ----
@@ -94,7 +94,7 @@ Markdownでは``{数値}.``で記述するがasciidocでは``.``を使用する�
 |data1|data2|data3
 |===
 
-セルの結合もできます。
+セルの結合もできる。
 
 ----
 [options="header,autowidth"]
@@ -131,10 +131,10 @@ Markdownでは``{数値}.``で記述するがasciidocでは``.``を使用する�
 |====
 
 === PlantUML
-asciidoc-diagramを使用すると、PlantUMLを直接記述できます。 +
+asciidoc-diagramを使用すると、PlantUMLを直接記述できる。 +
 （画像を自動生成して挿入してくれる）
 
-別ファイルにしてincludeもできます。
+別ファイルにしてincludeもできる。
 
 ----
 @startuml
@@ -158,8 +158,8 @@ Alice <-- Bob: Another authentication Response
 ----
 
 === Draw.io
-図や画像を埋め込む場合は、imageマクロを使います。 +
-Draw.ioでSVG形式の画像を作成すると、VSCodeでシームレスに編集できます。
+図や画像を埋め込む場合は、imageマクロを使う。 +
+Draw.ioでSVG形式の画像を作成すると、VS Codeでシームレスに編集できる。
 
 ----
 image::drawio-example.drawio.svg[width=100%]
@@ -168,7 +168,7 @@ image::drawio-example.drawio.svg[width=100%]
 image::drawio-example.drawio.svg[width=100%]
 
 === ソースコードブロック
-ソースコードの構文強調表示にも対応します。
+ソースコードの構文強調表示にも対応する。
 
 .Java
 [source, java]
