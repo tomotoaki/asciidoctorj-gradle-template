@@ -1,4 +1,9 @@
+:doctype: book
+:imagesdir: images
+:source-highlighter: highlight.js
+
 include::./_attribute.adoc[]
+
 = Asciidocテンプレート
 
 == はじめに
@@ -131,6 +136,16 @@ asciidoc-diagramを使用すると、PlantUMLを直接記述できます。 +
 
 別ファイルにしてincludeもできます。
 
+----
+@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+@enduml
+----
+
 [plantuml, target="plantuml-example"]
 ----
 @startuml
@@ -141,3 +156,40 @@ Alice -> Bob: Another authentication Request
 Alice <-- Bob: Another authentication Response
 @enduml
 ----
+
+=== Draw.io
+図や画像を埋め込む場合は、imageマクロを使います。 +
+Draw.ioでSVG形式の画像を作成すると、VSCodeでシームレスに編集できます。
+
+----
+image::drawio-example.drawio.svg[width=100%]
+----
+
+image::drawio-example.drawio.svg[width=100%]
+
+=== ソースコードブロック
+ソースコードの構文強調表示にも対応します。
+
+.Java
+[source, java]
+----
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");    // <1>
+    }
+}
+----
+<1> 吹き出しのサンプル
+
+.Python
+[source, python]
+----
+def main():
+    print('Hello, World!')  # <1>
+
+
+if __name__ == '__main__':
+    main()  # <2>
+----
+<1> 吹き出しのサンプル1
+<2> 吹き出しのサンプル2

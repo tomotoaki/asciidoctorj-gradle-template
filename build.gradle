@@ -35,7 +35,7 @@ asciidoctor {
             'toc': 'left',
             'icons': 'font',
             'imagesdir': "images",
-            'stylesdir': "${rootDir}/src/docs/styles",
+            'stylesdir': "${rootDir}/src/docs/resources",
             'stylesheet': 'asciidoctor.css',
             //'source-highlighter': 'coderay',
             'source-highlighter': 'rouge',
@@ -87,7 +87,7 @@ tasks.register('convertDocx', Exec) {
                 '--from=docbook',       // 入力フォーマット
                 '--to=docx',            // 出力フォーマット
                 '--highlight-style=tango',  // シンタックスハイライトスタイル
-                "--reference-doc=${rootDir}/src/docs/styles/template.docx", // テンプレートファイルを指定
+                "--reference-doc=${rootDir}/src/docs/resources/template.docx", // テンプレートファイルを指定
                 '-o',                   // 出力ファイル指定オプション
                 targetDocxFile.absolutePath, // 出力ファイルパス (例: my-project.docx)
                 docbookFile.absolutePath, // 入力ファイルパス (index.xml)

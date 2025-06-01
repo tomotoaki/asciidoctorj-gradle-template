@@ -5,6 +5,5 @@
     "asciidoc",
     "html"
   ],
-  "textlint.nodePath": "C:\\node",
-  "textlint.run": "onType"
+  "textlint.run": "onSave"
 }
