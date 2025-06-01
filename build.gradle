@@ -88,6 +88,7 @@ tasks.register('convertDocx', Exec) {
                 '--to=docx',            // 出力フォーマット
                 '--highlight-style=tango',  // シンタックスハイライトスタイル
                 "--reference-doc=${rootDir}/src/docs/resources/template.docx", // テンプレートファイルを指定
+                "--resource-path=${docbookDir}", // 画像などのリソースファイルを検索するパスを指定
                 '-o',                   // 出力ファイル指定オプション
                 targetDocxFile.absolutePath, // 出力ファイルパス (例: my-project.docx)
                 docbookFile.absolutePath, // 入力ファイルパス (index.xml)
