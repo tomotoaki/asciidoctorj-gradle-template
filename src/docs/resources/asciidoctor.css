@@ -1,7 +1,7 @@
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 :root {
-  --serif:"Yu Mincho","Hiragino Mincho ProN","MS PMincho",serif;
-  --sans-serif:"Meiryo","Hiragino Kaku Gothic ProN","MS PGothic",sans-serif;
+  --serif:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN","MS PMincho",serif;
+  --sans-serif:"Noto Sans JP","Meiryo","Hiragino Kaku Gothic ProN","MS PGothic",sans-serif;
   --monospace: Consolas,"BIZ UDGothic","Osaka-Mono","MS Gothic",monospace;
 }
 html{font-family:sans-serif;-webkit-text-size-adjust:100%}
