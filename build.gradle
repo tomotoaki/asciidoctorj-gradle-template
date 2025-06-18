@@ -7,10 +7,11 @@ repositories {
 }
 
 asciidoctor {
+    baseDirFollowsSourceFile()
     outputOptions {
         backends 'html5', 'docbook'
     }
-    baseDir = project.file('src/docs/asciidoc')
+    sourceDir = project.file('src/docs/asciidoc')
     outputDir = project.file('build/docs')
     resources {
         from('src/docs/asciidoc') {
@@ -34,7 +35,6 @@ asciidoctor {
             'encoding': 'utf-8',
             'toc': 'left',
             'icons': 'font',
-            'imagesdir': "images",
             'stylesdir': "${rootDir}/src/docs/resources",
             'stylesheet': 'asciidoctor.css',
             //'source-highlighter': 'coderay',

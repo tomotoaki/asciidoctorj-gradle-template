@@ -130,43 +130,6 @@ Markdownでは``{数値}.``で記述するがasciidocでは``.``を使用する�
 |5-1
 |====
 
-=== PlantUML
-asciidoc-diagramを使用すると、PlantUMLを直接記述できる。 +
-（画像を自動生成して挿入してくれる）
-
-別ファイルにしてincludeもできる。
-
-----
-@startuml
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: Another authentication Response
-@enduml
-----
-
-[plantuml, target="plantuml-example"]
-----
-@startuml
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: Another authentication Response
-@enduml
-----
-
-=== Draw.io
-図や画像を埋め込む場合は、imageマクロを使う。 +
-Draw.ioでSVG形式の画像を作成すると、VS Codeでシームレスに編集できる。
-
-----
-image::drawio-example.drawio.svg[width=100%]
-----
-
-image::drawio-example.drawio.svg[width=100%]
-
 === ソースコードブロック
 ソースコードの構文強調表示にも対応する。
 
@@ -193,3 +156,12 @@ if __name__ == '__main__':
 ----
 <1> 吹き出しのサンプル1
 <2> 吹き出しのサンプル2
+
+== Appendix
+
+:leveloffset: +2
+:imagesdir: ./appendix/images
+
+include::./appendix/diagram.adoc[]
+
+:leveloffset: -2
