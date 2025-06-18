@@ -10,8 +10,8 @@ asciidoctor {
     outputOptions {
         backends 'html5', 'docbook'
     }
-    baseDir = file('src/docs/asciidoc')
-    outputDir = file('build/docs')
+    baseDir = project.file('src/docs/asciidoc')
+    outputDir = project.file('build/docs')
     resources {
         from('src/docs/asciidoc') {
             include(
@@ -52,12 +52,12 @@ tasks.register('convertDocx', Exec) {
     description = 'Generates DOCX from DocBook (index.xml) using Pandoc, named after the project root directory.'
 
     // asciidoctorタスクの出力ディレクトリ設定を参照
-    def docbookDir = file("${asciidoctor.outputDir}/docbook")
-    def docxDir = file("${asciidoctor.outputDir}/docx")
+    def docbookDir = project.file("${asciidoctor.outputDir}/docbook")
+    def docxDir = project.file("${asciidoctor.outputDir}/docx")
 
     // Gradleの入力/出力定義 (Up-to-dateチェック用)
     // 入力ファイルは index.xml
-    def targetDocbookFile = file("${docbookDir}/index.xml")
+    def targetDocbookFile = project.file("${docbookDir}/index.xml")
     inputs.file(targetDocbookFile)
         .withPathSensitivity(PathSensitivity.RELATIVE) // パス感度を設定
         .optional() // ファイルが存在しない場合もあるため optional を設定
@@ -65,7 +65,7 @@ tasks.register('convertDocx', Exec) {
     // 出力ファイル名をプロジェクトルートディレクトリ名から決定
     // 例: プロジェクトルートが 'my-project' なら、出力ファイル名は 'my-project.docx'
     def projectRootName = project.rootDir.name // プロジェクトルートディレクトリ名を取得
-    def targetDocxFile = file("${docxDir}/${projectRootName}.docx")
+    def targetDocxFile = project.file("${docxDir}/${projectRootName}.docx")
     outputs.file(targetDocxFile) // 具体的な出力ファイルを指定
 
     // Pandocコマンドの設定
