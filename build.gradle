@@ -36,9 +36,13 @@ asciidoctor {
             'toc': 'left',
             'icons': 'font',
             'stylesdir': "${rootDir}/src/docs/resources",
-            'stylesheet': 'asciidoctor.css',
-            //'source-highlighter': 'coderay',
-            'source-highlighter': 'rouge',
+            // 'stylesheet': 'asciidoctor.css',
+            // 'stylesheet': 'clean.css',
+            'stylesheet': 'plain.css',
+            // 'stylesheet': 'fedora.css',
+            'source-highlighter': 'highlight.js',
+            // 'source-highlighter': 'coderay',
+            // 'source-highlighter': 'rouge',
             'plantuml-format': 'svg',
         )
     }
